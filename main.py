@@ -1,124 +1,133 @@
 import getpass
 import os
 
-accounts_list = {
-    '0001-02': {
+accountsList = {
+    '0001-01': {
         'password': '123456',
         'name': 'Fulano da Silva',
-        'value': 100,
-        'admin': False
+        'balance': 500,
+        'admin': False,
     },
     '0002-02': {
-        'password': '123456',
-        'name': 'Cicrano da Silva',
-        'value': 50,
-        'admin': False
+        'password': '654321',
+        'name': 'Ciclano Pereira',
+        'balance': 757.86,
+        'admin': False,
     },
-    '1111-11': {
-        'password': '123456',
-        'name': 'Admin da Silva',
-        'value': 1000,
-        'admin': True
-    }
+    '2222-22': {
+        'password': '112233',
+        'name': 'Admin Silva',
+        'balance': 2.960,
+        'admin': True,
+    },
 }
-
-money_slips = {
+moneyNotes = {
     '20': 5,
     '50': 5,
     '100': 5,
 }
+auth = False
 
-while True:
+while not auth:
     print("****************************************")
     print("*** School of Net - Caixa Eletrônico ***")
     print("****************************************")
+
     account_typed = input('Digite sua conta: ')
     password_typed = getpass.getpass('Digite sua senha: ')
-    # print(account_typed)
-    # print(password_typed)
 
-    # accounts_list = [
-    #     {
-    #         'agency': '0001-02',
-    #         'password': '123456',
-    #         'name': 'Fulano da Silva',
-    #         'value': 0
-    #     },
-    #     {
-    #         'agency': '0002-02',
-    #         'password': '123456',
-    #         'name': 'Fulano da Silva',
-    #         'value': 0
-    #     }
-    # ]
-    # flag = False
-    # for account in accounts_list:
-    #     if account_typed == account['agency'] and password_typed == account['password']:
-    #         flag = True
-    #         print('Conta válida')
-    #
-    # if not flag:
-    #     print('Conta inválida')
+    if account_typed in accountsList and password_typed == accountsList[account_typed]['password']:
+        auth = True
+        selectedOptions = 0
+        showLastOption = str
+        admin = accountsList[account_typed]['admin']
 
-    if account_typed in accounts_list and password_typed == accounts_list[account_typed]['password']:
-        clear = 'cls' if os.name == 'nt' else 'clear'
-        os.system(clear)
+        os.system('cls' if os.name == 'nt' else 'clear')
+        # if
 
+        name = accountsList[account_typed]['name']
+        balance = accountsList[account_typed]['balance']
         print("****************************************")
         print("*** School of Net - Caixa Eletrônico ***")
         print("****************************************")
-        print("1 - Saldo")
-        print("2 - Saque")
-        if accounts_list[account_typed]['admin']:
-            print("10 - Incluir cédulas")
-        option_typed = input('Escolha uma das opções acima: ')
-        if option_typed == '1':
-            # print('Seu saldo é ' + accounts_list[account_typed]['value'])
-            print('Seu saldo é %s' % accounts_list[account_typed]['value'])
-        elif option_typed == '10' and accounts_list[account_typed]['admin']:
-            amount_typed = input('Digite a quantidade de cédulas: ')
-            money_bill_typed = input('Digite a cédula a ser incluída: ')
-            # money_slips[money_bill_typed] = money_slips[money_bill_typed] + int(amount_typed)
-            money_slips[money_bill_typed] += int(amount_typed)
-            print(money_slips)
-        elif option_typed == '2':
-            value_typed = input('Digite o valor a ser sacado: ')
+        print("    Seja bem-vindo, " + name)
+        print("****************************************")
+        print("****************************************")
 
-            money_slips_user = {}
-            value_int = int(value_typed)
+        while auth:
+            print("1 - Saldo")
+            print("2 - Saque")
+            print("3 - Sair")
 
-            if value_int // 100 > 0 and value_int // 100 <= money_slips['100']:
-                money_slips_user['100'] = value_int // 100
-                value_int = value_int - value_int // 100 * 100
+            if admin:
+                print("4 - Incluir cédulas")
 
-            if value_int // 50 > 0 and value_int // 50 <= money_slips['50']:
-                money_slips_user['50'] = value_int // 50
-                value_int = value_int - value_int // 50 * 50
+            option = input("Escolha uma das opções acima: ")
 
-            if value_int // 20 > 0 and value_int // 20 <= money_slips['20']:
-                money_slips_user['20'] = value_int // 20
-                value_int = value_int - value_int // 20 * 20
+            if option == '1':
+                showLastOption = "Seu saldo: %s" % balance
+                print("Seu saldo: %s" % balance)
+                selectedOptions += 1
+            elif option == '2':
+                valueTyped = input('Digite o valor que você quer sacar: ')
 
-            if value_int != 0:
-                print('O caixa não tem cédulas disponíveis para este valor')
+                moneyNotesUser = {}
+                value = int(valueTyped)
+
+                if 0 < value // 100 <= moneyNotes['100']:
+                    moneyNotesUser['100'] = value // 100
+                    value = value - value // 100 * 100
+
+                if 0 < value // 50 <= moneyNotes['50']:
+                    moneyNotesUser['50'] = value // 50
+                    value = value - value // 50 * 50
+
+                if 0 < value // 20 <= moneyNotes['20']:
+                    moneyNotesUser['20'] = value // 20
+                    value = value - value // 20 * 20
+
+                if value != 0:
+                    total = 0
+                    for key, value in moneyNotes.items():
+                        multi = int(key) * value
+                        total += multi
+                    showLastOption = "Não foi possível realizar o saque. \nO caixa não tem cédulas disponíveis para este valor.\nValor disponível para saque: %s" % total
+                    selectedOptions += 1
+                else:
+                    showLastOption = "Você está sacando: R$ %s,00" % valueTyped + ". Aguarde até que as notas sejam liberadas."
+                    selectedOptions += 1
+            elif option == '3':
+                auth = False
+            elif option == '4' and admin:
+                amount = input('Digite a quantidade de cédulas: ')
+                note = input('Digite a cédula a ser inclúida: ')
+                selectedOptions += 1
+
+                if note not in moneyNotes:
+                    print('Vocẽ quer inserir uma nota que não existe')
+                else:
+                    moneyNotes[note] += int(amount)
+                    showLastOption = "Você inseriu %s " % amount + "notas " + "de %s " % note + "reais!"
+                    print(moneyNotes)
+
             else:
-                for money_bill in money_slips_user:
-                    money_slips[money_bill] -= money_slips_user[money_bill]
-                print('Pegue as notas:')
-                print(money_slips_user)
-            # 200 / 100 = 2
-            # 200 / 50 = 4
-            # 200 / 20 = 10
-            #
-            # 270 / 100 = 2 - 70
-            # 70 / 50 = 1 - 20
-            # 20 / 20 = 1 - 0
+                showLastOption = "A opção que você escolheu não existe"
+                selectedOptions += 1
+
+            if selectedOptions >= 1:
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print("****************************************")
+                print(showLastOption)
+                print("****************************************")
+                selectedOptions = 0
 
 
     else:
-        print('Conta inválida')
+        showLastOption = "Acesso negado. Verifique conta e senha"
 
-    input('Pressione <ENTER> para continuar...')  # pause do programa
+    # input("Pressione <ENTER> para continuar...")
 
-    clear = 'cls' if os.name == 'nt' else 'clear'
-    os.system(clear)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("****************************************")
+    print(showLastOption)
+    print("****************************************")
