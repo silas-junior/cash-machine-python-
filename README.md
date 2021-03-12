@@ -6,9 +6,7 @@ Script feito com Python, através da plataforma School of Net.
 
 
 <div align="center">
-  <video width="100%">
-    <source src="./presentation.webm">
-</video>
+  <img src="./presentation.gif" width="100%">
 </div>
 
 ## 👨🏼‍💻 Desenvolvedor
