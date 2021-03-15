@@ -1,7 +1,7 @@
 import getpass
 import os
 
-accountsList = {
+accounts_list = {
     '0001-01': {
         'password': '123456',
         'name': 'Fulano da Silva',
@@ -21,10 +21,10 @@ accountsList = {
         'admin': True,
     },
 }
-moneyNotes = {
+money_notes = {
     '20': 5,
     '50': 5,
-    '100': 5,
+    '100': 6,
 }
 
 
@@ -36,17 +36,16 @@ def main():
         account_typed = input('Digite sua conta: ')
         password_typed = getpass.getpass('Digite sua senha: ')
 
-        if account_typed in accountsList and password_typed == accountsList[account_typed]['password']:
+        if account_typed in accounts_list and password_typed == accounts_list[account_typed]['password']:
             auth = True
-            selectedOptions = 0
-            showLastOption = str
-            admin = accountsList[account_typed]['admin']
+            selected_options = 0
+            show_last_option = str
+            admin = accounts_list[account_typed]['admin']
 
-            os.system('cls' if os.name == 'nt' else 'clear')
-            # if
+            clear()
 
-            name = accountsList[account_typed]['name']
-            balance = accountsList[account_typed]['balance']
+            name = accounts_list[account_typed]['name']
+            balance = accounts_list[account_typed]['balance']
             header(name)
 
             while auth:
@@ -60,83 +59,79 @@ def main():
                 option = input("Escolha uma das opções acima: ")
 
                 if option == '1':
-                    showLastOption = f"Seu saldo: R$ {balance},00"
-                    selectedOptions += 1
+                    show_last_option = f"Seu saldo: R$ {balance},00"
+                    selected_options += 1
                 elif option == '2':
-                    valueTyped = input('Digite o valor que você quer sacar: ')
+                    value_typed = input('Digite o valor que você quer sacar: ')
 
-                    moneyNotesUser = {}
-                    value = int(valueTyped)
+                    money_notes_user = {}
+                    value = int(value_typed)
 
-                    rest = balance - int(valueTyped)
+                    rest = balance - int(value_typed)
 
-                    if 0 < value // 100 <= moneyNotes['100']:
-                        moneyNotesUser['100'] = value // 100
+                    if 0 < value // 100 <= money_notes['100']:
+                        money_notes_user['100'] = value // 100
                         value = value - value // 100 * 100
 
-                    if 0 < value // 50 <= moneyNotes['50']:
-                        moneyNotesUser['50'] = value // 50
+                    if 0 < value // 50 <= money_notes['50']:
+                        money_notes_user['50'] = value // 50
                         value = value - value // 50 * 50
 
-                    if 0 < value // 20 <= moneyNotes['20']:
-                        moneyNotesUser['20'] = value // 20
+                    if 0 < value // 20 <= money_notes['20']:
+                        money_notes_user['20'] = value // 20
                         value = value - value // 20 * 20
 
                     if value != 0:
                         total = 0
-                        for key, value in moneyNotes.items():
+                        for key, value in money_notes.items():
                             multi = int(key) * value
                             total += multi
 
-                        showLastOption = "Não foi possível realizar o saque. \nO caixa não tem cédulas disponíveis para este valor."
+                        show_last_option = "Não foi possível realizar o saque. \nO caixa não tem cédulas disponíveis para este valor."
 
-                        selectedOptions += 1
-                    elif value == 0 and balance > int(valueTyped):
+                        selected_options += 1
+                    elif value == 0 and balance > int(value_typed):
 
-                        showLastOption = f"Saldo: R$ {balance},00 \nVocê está sacando: R$ {valueTyped},00 \nNa sua conta irá sobrar: R$ {rest},00 \nAguarde até que as notas sejam liberadas."
-                        selectedOptions += 1
+                        show_last_option = f"Saldo: R$ {balance},00 \nVocê está sacando: R$ {value_typed},00 \nNa sua conta irá sobrar: R$ {rest},00 \nAguarde até que as notas sejam liberadas."
+                        selected_options += 1
 
-                    else:
-                        showLastOption = 'Valor de saque maior que o valor em conta!'
-                        selectedOptions += 1
+                    elif balance < int(value_typed):
+                        show_last_option = f'Valor de saque maior que o valor em conta!\nVocê quer sacar R$ {value_typed},00 mas possui R$ {balance},00 em sua conta'
+                        selected_options += 1
 
                 elif option == '3':
                     auth = False
-                    showLastOption = "Você encerrou a sessão!"
+                    show_last_option = "Até logo!"
                 elif option == '4' and admin:
                     amount = input('Digite a quantidade de cédulas: ')
                     note = input('Digite a cédula a ser inclúida: ')
-                    selectedOptions += 1
+                    selected_options += 1
 
-                    if note not in moneyNotes:
+                    if note not in money_notes:
                         print('Vocẽ quer inserir uma nota que não existe')
-                        selectedOptions += 1
+                        selected_options += 1
                     else:
-                        moneyNotes[note] += int(amount)
-                        showLastOption = f"Você inseriu {amount} notas de {note} reais"
-                        print(moneyNotes)
-                        selectedOptions += 1
+                        money_notes[note] += int(amount)
+                        show_last_option = f"Você inseriu {amount} notas de {note} reais"
+                        print(money_notes)
+                        selected_options += 1
 
                 else:
-                    showLastOption = "A opção que você escolheu não existe"
-                    selectedOptions += 1
+                    show_last_option = "A opção que você escolheu não existe"
+                    selected_options += 1
 
-                if selectedOptions >= 1:
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    print("****************************************")
-                    print(showLastOption)
-                    print("****************************************")
-                    selectedOptions = 0
+                if selected_options >= 1:
+                    clear()
+                    show_option(show_last_option)
+                    selected_options = 0
 
         else:
-            showLastOption = "Acesso negado. Verifique conta e senha"
+            show_last_option = "Acesso negado. Verifique conta e senha"
 
         # input("Pressione <ENTER> para continuar...")
 
-        os.system('cls' if os.name == 'nt' else 'clear')
-        print("****************************************")
-        print(showLastOption)
-        print("****************************************")
+        clear()
+        show_option(show_last_option)
 
 
 def header(name='default'):
@@ -150,5 +145,15 @@ def header(name='default'):
         print("****************************************")
 
 
-main()
+def clear():
+    clear = 'cls' if os.name == 'nt' else 'clear'
+    os.system(clear)
 
+
+def show_option(option_content):
+    print("****************************************")
+    print(option_content)
+    print("****************************************")
+
+
+main()
