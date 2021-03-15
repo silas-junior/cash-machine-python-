@@ -33,35 +33,27 @@ def main():
     while not auth:
         header()
 
-        account_typed = input('Digite sua conta: ')
-        password_typed = getpass.getpass('Digite sua senha: ')
+        account = login()
 
-        if account_typed in accounts_list and password_typed == accounts_list[account_typed]['password']:
+        if account:
             auth = True
             selected_options = 0
             show_last_option = str
-            admin = accounts_list[account_typed]['admin']
+            admin = accounts_list[account]['admin']
 
             clear()
 
-            name = accounts_list[account_typed]['name']
-            balance = accounts_list[account_typed]['balance']
+            name = accounts_list[account]['name']
+            balance = accounts_list[account]['balance']
             header(name)
 
             while auth:
-                print("1 - Saldo")
-                print("2 - Saque")
-                print("3 - Sair")
+                option_typed = menu_options(account)
 
-                if admin:
-                    print("4 - Incluir cédulas")
-
-                option = input("Escolha uma das opções acima: ")
-
-                if option == '1':
+                if option_typed == '1':
                     show_last_option = f"Seu saldo: R$ {balance},00"
                     selected_options += 1
-                elif option == '2':
+                elif option_typed == '2':
                     value_typed = input('Digite o valor que você quer sacar: ')
 
                     money_notes_user = {}
@@ -99,10 +91,10 @@ def main():
                         show_last_option = f'Valor de saque maior que o valor em conta!\nVocê quer sacar R$ {value_typed},00 mas possui R$ {balance},00 em sua conta'
                         selected_options += 1
 
-                elif option == '3':
+                elif option_typed == '3':
                     auth = False
                     show_last_option = "Até logo!"
-                elif option == '4' and admin:
+                elif option_typed == '4' and admin:
                     amount = input('Digite a quantidade de cédulas: ')
                     note = input('Digite a cédula a ser inclúida: ')
                     selected_options += 1
@@ -143,6 +135,26 @@ def header(name='default'):
         print("    Seja bem-vindo, " + name)
         print("****************************************")
         print("****************************************")
+
+
+def login():
+    account_typed = input('Digite sua conta: ')
+    password_typed = getpass.getpass('Digite sua senha: ')
+
+    if account_typed in accounts_list and password_typed == accounts_list[account_typed]['password']:
+        return account_typed
+    else:
+        return False
+
+
+def menu_options(account):
+    print("1 - Saldo")
+    print("2 - Saque")
+    print("3 - Sair")
+
+    if accounts_list[account]['admin']:
+        print("4 - Incluir cédulas")
+    return input("Escolha uma das opções acima: ")
 
 
 def clear():
