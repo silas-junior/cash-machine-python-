@@ -224,7 +224,21 @@ def logout():
 
 
 def include_notes():
-    pass
+    amount = input('Digite a quantidade de cédulas: ')
+    note = input('Digite a cédula a ser inclúida: ')
+    increment_options()
+
+    if note not in money_notes:
+        clear_terminal()
+        message = 'Vocẽ quer inserir uma nota que não existe!'
+        show_message(message)
+        increment_options()
+    else:
+        money_notes[note] += int(amount)
+        clear_terminal()
+        message = f"Você inseriu {amount} notas de {note} reais"
+        show_message(message)
+        increment_options()
 
 
 def login():
