@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d37d6c00-350a-40b8-9a95-b1107899d5b9" name="Default" comment="adjustment in functions organization">
-      <change afterPath="$PROJECT_DIR$/cash_machine_variables.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/operations.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+    <list default="true" id="d37d6c00-350a-40b8-9a95-b1107899d5b9" name="Default" comment="organizing in modules">
+      <change afterPath="$PROJECT_DIR$/file.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/os_lib.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615897840663</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="organizing in modules">
+      <created>1615930077656</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1615930077656</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -245,7 +250,8 @@
     <MESSAGE value="adjustment in video in readme" />
     <MESSAGE value="organizing code in functions" />
     <MESSAGE value="adjustment in functions organization" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjustment in functions organization" />
+    <MESSAGE value="organizing in modules" />
+    <option name="LAST_COMMIT_MESSAGE" value="organizing in modules" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
