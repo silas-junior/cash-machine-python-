@@ -1,12 +1,14 @@
 from file import load_bank_data
 from utils import header, clear_terminal
 from operations import login, menu_options, exec_option, show_message
-from cash_machine_variables import accounts_list
+from cash_machine_variables import accounts_list, money_notes
 
 
 def main():
     while True:
         load_bank_data()
+        print(money_notes)
+        print(accounts_list)
         header()
 
         account = login()

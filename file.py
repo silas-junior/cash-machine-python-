@@ -61,10 +61,39 @@ def read_money_notes(file):
         semicolon_pos = line.find(';')
         note_block = line[0:semicolon_pos]
         set_note_block(note_block)
-        if semicolon_pos+1 == len(line):
+        if semicolon_pos + 1 == len(line):
             break
         else:
-            line = line[semicolon_pos+1:len(line)]
+            line = line[semicolon_pos + 1:len(line)]
+
+
+def read_bank_accounts(file):
+    lines = file.readlines()
+    lines = lines[1: len(lines)]
+    for account_line in lines:
+        extract_bank_account(account_line)
+        
+
+def extract_bank_account(account_line):
+    account_data = []
+    while account_line.find(';') != -1:
+        semicolon_pos = account_line.find(';')
+        data_block = account_line[0:semicolon_pos]
+        account_data.append(data_block)
+        if semicolon_pos + 1 == len(account_line):
+            break
+        else:
+            account_line = account_line[semicolon_pos + 1:len(account_line)]
+    add_bank_account(account_data)
+
+
+def add_bank_account(account_data):
+    accounts_list[account_data[0]] = {
+        'name': account_data[1],
+        'password': account_data[2],
+        'balance': float(account_data[3]),
+        'admin': True if account_data[4] == 'True' else False
+    }
 
 
 def set_note_block(note_block):
@@ -79,3 +108,8 @@ def set_note_block(note_block):
 def load_bank_data():
     file = open_file_bank('r')
     read_money_notes(file)
+    file.close()
+
+    file = open_file_bank('r')
+    read_bank_accounts(file)
+    file.close()
