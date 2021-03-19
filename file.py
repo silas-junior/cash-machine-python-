@@ -5,7 +5,7 @@
 # utils.clear_terminal()
 # print(main.accounts_list)
 import os
-from cash_machine_variables import money_notes
+from cash_machine_variables import money_notes, accounts_list
 
 # from cash_machine_variables import accounts_list
 #
@@ -41,6 +41,18 @@ def open_file_bank(mode):
 def write_money_notes(file):
     for note, value in money_notes.items():
         file.write(f"{note}={value};")
+
+
+def write_bank_accounts(file):
+    for account, info_account in accounts_list.items():
+        file.writelines((
+            account, ';',
+            info_account['name'], ';',
+            info_account['password'], ';',
+            str(info_account['balance']), ';',
+            str(info_account['admin']), ';',
+            '\n'
+        ))
 
 
 def read_money_notes(file):
