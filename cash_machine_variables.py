@@ -18,6 +18,7 @@ accounts_list = {
         'admin': True,
     },
 }
+
 money_notes = {
     '20': 5,
     '50': 5,

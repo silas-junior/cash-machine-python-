@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d37d6c00-350a-40b8-9a95-b1107899d5b9" name="Default" comment="init in write files">
-      <change afterPath="$PROJECT_DIR$/_bank_file.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generate_bank.py" afterDir="false" />
+    <list default="true" id="d37d6c00-350a-40b8-9a95-b1107899d5b9" name="Default" comment="write files for Money_notes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_bank_file.dat" beforeDir="false" afterPath="$PROJECT_DIR$/_bank_file.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cash_machine_variables.py" beforeDir="false" afterPath="$PROJECT_DIR$/cash_machine_variables.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/file.py" beforeDir="false" afterPath="$PROJECT_DIR$/file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file_test.dat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/operations.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616011068602</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="write files for Money_notes">
+      <created>1616097589816</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1616097589816</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -262,7 +270,8 @@
     <MESSAGE value="adjustment in functions organization" />
     <MESSAGE value="organizing in modules" />
     <MESSAGE value="init in write files" />
-    <option name="LAST_COMMIT_MESSAGE" value="init in write files" />
+    <MESSAGE value="write files for Money_notes" />
+    <option name="LAST_COMMIT_MESSAGE" value="write files for Money_notes" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">

@@ -1,18 +1,18 @@
+from file import load_bank_data
 from utils import header, clear_terminal
 from operations import login, menu_options, exec_option, show_message
 from cash_machine_variables import accounts_list
 
 
 def main():
-    auth = False
-    while not auth:
+    while True:
+        load_bank_data()
         header()
 
         account = login()
 
         if account:
             clear_terminal()
-            auth = True
             message = str
             admin = accounts_list[account]['admin']
             name = accounts_list[account]['name']
@@ -20,10 +20,10 @@ def main():
 
             header(name)
 
-            while auth:
+            while account:
                 option_typed = menu_options(account)
 
-                exec_option(option_typed, account, balance, admin, auth)
+                exec_option(option_typed, balance, admin)
         else:
             clear_terminal()
             message = "Acesso negado. Verifique conta e senha"

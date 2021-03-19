@@ -25,7 +25,7 @@ def menu_options(account):
     return input("Escolha uma das opções acima: ")
 
 
-def exec_option(option_typed, account, balance, admin, auth):
+def exec_option(option_typed, balance, admin):
     if option_typed == '1':
         clear_terminal()
         message = f"Seu saldo: R$ {balance},00"

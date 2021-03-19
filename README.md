@@ -1,8 +1,9 @@
-<h2 align="center">Caixa Eletrônico - Python</h2>
+<h1 align="center">Caixa Eletrônico - Python</h1>
 
 ## 💻 Projeto
 
-Script feito com Python, através da plataforma School of Net.
+<p>Script feito com Python, através da plataforma School of Net.</p>
+<p>Para rodar o projeto normalmente, a versão do Python tem que ser igual ou mais recente que a versão 3.6</p>
 
 
 <div align="center">
