@@ -1,3 +1,4 @@
+from console import CashMachineConsole
 from utils import clear_terminal, header
 
 
@@ -6,7 +7,7 @@ def main():
 
     header()
 
-    # LÓGICA
+    CashMachineConsole.call_operation()
 
 
 if __name__ == '__main__':
