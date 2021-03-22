@@ -39,8 +39,8 @@ def open_file_bank(mode):
 
 
 def write_money_notes(file):
-    for note, value in money_notes.items():
-        file.write(f"{note}={value};")
+    for note, quantity in money_notes.items():
+        file.write(f"{note}={quantity};")
 
 
 def write_bank_accounts(file):
@@ -72,7 +72,7 @@ def read_bank_accounts(file):
     lines = lines[1: len(lines)]
     for account_line in lines:
         extract_bank_account(account_line)
-        
+
 
 def extract_bank_account(account_line):
     account_data = []
@@ -112,4 +112,20 @@ def load_bank_data():
 
     file = open_file_bank('r')
     read_bank_accounts(file)
+    file.close()
+
+
+def save_money_notes():
+    file = open_file_bank('r')
+    lines = file.readlines()
+    file.close()
+
+    file = open_file_bank('w')
+    lines[0] = ""
+
+    for note, quantity in money_notes.items():
+        file.write(f"{note}={quantity};")
+
+    lines[0] += '\n'
+    file.writelines(lines)
     file.close()

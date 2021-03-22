@@ -1,5 +1,7 @@
 from cash_machine_variables import accounts_list, money_notes
 import getpass
+
+from file import save_money_notes
 from utils import clear_terminal
 
 
@@ -87,6 +89,7 @@ def withdrawal(balance):
         message = f"Saldo: R$ {balance},00 \nVocê está sacando: R$ {value_typed},00 \nNa sua conta irá sobrar: R$ {rest},00 \nAguarde até que as notas sejam liberadas."
         for note in money_notes_user:
             money_notes[note] -= money_notes_user[note]
+            save_money_notes()
         show_message(message)
 
     elif balance < int(value_typed):
