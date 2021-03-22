@@ -129,3 +129,9 @@ def save_money_notes():
     lines[0] += '\n'
     file.writelines(lines)
     file.close()
+
+
+def delete_file():
+    file = open(BASE_PATH + '/file_to_delete.dat', 'w')
+    file.close()
+    os.unlink(BASE_PATH + '/file_to_delete.dat')
