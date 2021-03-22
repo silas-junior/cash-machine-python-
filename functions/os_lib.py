@@ -1,6 +1,6 @@
 import os
 
-print(os.path.abspath('.')) #caminho até chegar neste arquivo
+print(os.path.abspath('..')) #caminho até chegar neste arquivo
 print(os.path.abspath('./test/folder/test_file.py'))
 print(os.path.abspath('./test/folder'))
 

@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d37d6c00-350a-40b8-9a95-b1107899d5b9" name="Default" comment="reading bank_accounts on file">
+    <list default="true" id="d37d6c00-350a-40b8-9a95-b1107899d5b9" name="Default" comment="deleting files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/file.py" beforeDir="false" afterPath="$PROJECT_DIR$/file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operations.py" beforeDir="false" afterPath="$PROJECT_DIR$/operations.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +220,21 @@
       <option name="project" value="LOCAL" />
       <updated>1616183129640</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="saving money_notes">
+      <created>1616427428135</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1616427428135</updated>
+    </task>
+    <task id="LOCAL-00018" summary="deleting files">
+      <created>1616427510716</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1616427510716</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -291,7 +303,9 @@
     <MESSAGE value="recording money_notes in file" />
     <MESSAGE value="recording bank_accounts in file" />
     <MESSAGE value="reading bank_accounts on file" />
-    <option name="LAST_COMMIT_MESSAGE" value="reading bank_accounts on file" />
+    <MESSAGE value="saving money_notes" />
+    <MESSAGE value="deleting files" />
+    <option name="LAST_COMMIT_MESSAGE" value="deleting files" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/main.py">
